@@ -8,12 +8,13 @@ export default class Soldier extends Component {
 
   render() {
     return (
-      <tr>
-        <td>{props.soldier.name}</td>
-        <td>
-          <Link to={"/view/"+props.soldier.name}>view</Link> | <button onClick={() => { props.deleteSoldier(props.soldier.name) }}>delete</button>
-        </td>
-      </tr>
+      <div>
+        <h5>{props.soldier.name}</h5>
+        
+        <Link to={"/view/"+props.soldier.name}>view</Link> 
+        <button onClick={() => { props.deleteSoldier(props.soldier.name) }}>delete</button>
+        
+      </div>
     );
   }
 }

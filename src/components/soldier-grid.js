@@ -67,7 +67,7 @@ export default class SoldierGrid extends Component {
     return (
       <div>
         <h3>Soldiers</h3>
-        <button onClick={() => { this.updateSoldiers() }}>update</button>
+        <button type="button" class="btn btn-primary btn-lg" onClick={() => { this.updateSoldiers() }}>update</button>
         <table className="table">
           <thead className="thead-light">
             <tr>
