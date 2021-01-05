@@ -7,14 +7,23 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/add").post( async (req, res) => {
+router.route("/soldier/:name").get((req, res) => {
+  const name = req.params.name;
+  Soldier.findOne({ name: name })
+    .then((soldier) => res.json(soldier))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/add").post(async (req, res) => {
   const name = req.body.name;
-  const water = [{value: 70, time: Date.now()}];
-  const bodyDifferential = [{value: req.body.bodyDifferential, time: Date.now()}];
-  const heartRate = [{value: 100, time: Date.now()}];
-  const moisture = [{value: 50, time: Date.now()}];
-  const bmi = [{value: req.body.bmi, time: Date.now()}];
-  const riskScore = [{value: 0, time: Date.now()}];
+  const water = [{ value: 70, time: Date.now() }];
+  const bodyDifferential = [
+    { value: req.body.bodyDifferential, time: Date.now() },
+  ];
+  const heartRate = [{ value: 100, time: Date.now() }];
+  const moisture = [{ value: 50, time: Date.now() }];
+  const bmi = [{ value: req.body.bmi, time: Date.now() }];
+  const riskScore = [{ value: 0, time: Date.now() }];
 
   const newSoldier = new Soldier({
     name,
@@ -31,88 +40,76 @@ router.route("/add").post( async (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/delete").post( async (req, res) => {
+router.route("/delete").post(async (req, res) => {
   const name = req.body.name;
   return Soldier.deleteOne({ name: name })
     .then(() => res.json("Soldier deleted!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/water").post( async (req, res) => {
+router.route("/water").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { water: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} water`)
-    )
+    .then(() => res.json(`Updated soldier ${name} water`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/bodyDifferential").post( async (req, res) => {
+router.route("/bodyDifferential").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { bodyDifferential: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} body differential`)
-    )
+    .then(() => res.json(`Updated soldier ${name} body differential`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/heartRate").post( async (req, res) => {
+router.route("/heartRate").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { heartRate: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} heart rate`)
-    )
+    .then(() => res.json(`Updated soldier ${name} heart rate`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/moisture").post( async (req, res) => {
+router.route("/moisture").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { moisture: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} moisture`)
-    )
+    .then(() => res.json(`Updated soldier ${name} moisture`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/bmi").post( async (req, res) => {
+router.route("/bmi").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { bmi: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} bmi`)
-    )
+    .then(() => res.json(`Updated soldier ${name} bmi`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/riskScore").post( async (req, res) => {
+router.route("/riskScore").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;
 
   const newSample = { value: value, time: Date.now() };
 
   Soldier.updateOne({ name: name }, { $push: { riskScore: newSample } })
-    .then(() =>
-      res.json(`Updated soldier ${name} risk score`)
-    )
+    .then(() => res.json(`Updated soldier ${name} risk score`))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

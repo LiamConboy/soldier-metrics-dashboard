@@ -15,8 +15,8 @@ import {
 const TimeSeriesChart = ({ chartData }) => (
   <ResponsiveContainer width="100%" height={280}>
     <AreaChart
-        data={chartData}
-        margin={{ top: 10, right: 45, left: 0, bottom: 0 }}
+      data={chartData}
+      margin={{ top: 10, right: 45, left: 0, bottom: 0 }}
     >
       <CartesianGrid />
       <XAxis
@@ -27,8 +27,9 @@ const TimeSeriesChart = ({ chartData }) => (
         type="number"
       />
       <YAxis dataKey="value" name="Value" />
-      <Tooltip labelFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}/>
-
+      <Tooltip
+        labelFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}
+      />
       <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
     </AreaChart>
   </ResponsiveContainer>
