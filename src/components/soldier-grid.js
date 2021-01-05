@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import Soldier from "./soldier"
 
+/*
 const Soldier = props => (
     <tr>
       <td>{props.soldier.name}</td>
@@ -10,7 +11,7 @@ const Soldier = props => (
       </td>
     </tr>
   )
-
+*/
 export default class SoldierGrid extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +52,7 @@ export default class SoldierGrid extends Component {
     });
   }
 
+  /*
   soldierList() {
     return this.state.soldiers.map((currentSoldier) => {
       return (
@@ -62,21 +64,31 @@ export default class SoldierGrid extends Component {
       );
     });
   }
-
+  */
   render() {
     return (
-      <div>
-        <h3>Soldiers</h3>
-        <button type="button" class="btn btn-primary btn-lg" onClick={() => { this.updateSoldiers() }}>update</button>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Username</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{this.soldierList()}</tbody>
-        </table>
+      <div className="container">
+        <div className="row justify-content-center" style={{marginBottom: "20px"}}>
+          <div className="col-2">
+            <h3 style={{textAlign: "center"}}>Soldier Risk Scores</h3>
+          </div>
+          <div className="col-2" style={{textAlign: "center"}}>
+            <button type="button" className="btn btn-primary btn-lg" onClick={() => { this.updateSoldiers() }}>update</button>
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          {this.state.soldiers.map((currentSoldier) => {
+            return (
+              <div className="col-4" style={{textAlign: "center", marginBottom: "20px"}}>
+                <Soldier
+                  soldier={currentSoldier}
+                  deleteSoldier={this.deleteSoldier}
+                  key={currentSoldier.name}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

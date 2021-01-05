@@ -103,6 +103,19 @@ router.route("/bmi").post( async (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/riskScore").post( async (req, res) => {
+  const name = req.body.name;
+  const value = req.body.value;
+
+  const newSample = { value: value, time: Date.now() };
+
+  Soldier.updateOne({ name: name }, { $push: { riskScore: newSample } })
+    .then(() =>
+      res.json(`Updated soldier ${name} risk score`)
+    )
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 /*
 const calculateRiskScore = async (name) => {
   const soldier = (await Soldier.find({name: name}))[0]
