@@ -12,7 +12,7 @@ export default class CreateSoldier extends Component {
 
     this.state = {
       name: "",
-      bmi: 24,
+      bmi: undefined,
       bodyDifferential: 1,
     };
   }
@@ -84,6 +84,15 @@ export default class CreateSoldier extends Component {
               className="form-control"
               value={this.state.bodyDifferential}
               onChange={this.onChangeBodyDifferential}
+            />
+          </div>
+          <div className="form-group">
+            <label>Garmin Watch Number: </label>
+            <input
+              type="number"
+              
+              className="form-control"
+              
             />
           </div>
 

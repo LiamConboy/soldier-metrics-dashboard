@@ -55,15 +55,16 @@ export default class ViewSoldier extends Component {
           className="row justify-content-center"
           style={{ marginBottom: "20px" }}
         >
-          <div className="col-3">
-            <h3 style={{ textAlign: "center" }}>
+          <div className="col-md-5">
+            <h1 style={{ textAlign: "center" }}>
               Soldier {this.state.soldier.name} Metrics
-            </h3>
+            </h1>
           </div>
-          <div className="col-2" style={{ textAlign: "center" }}>
+          <div className="col-md-5" style={{ textAlign: "center" }}>
             <button
               type="button"
               className="btn btn-primary btn-lg"
+              style={{ width: "75%", minHeight: "75%" }}
               onClick={() => {
                 this.updateSoldier();
               }}
@@ -76,19 +77,19 @@ export default class ViewSoldier extends Component {
           className="row justify-content-center"
           style={{ marginBottom: "20px" }}
         >
-          <div className="col-4">
+          <div className="col-lg-4">
             <ViewSoldierTimeSeriesChart
               label={"Risk Score"}
               data={this.state.soldier.riskScore}
             />
           </div>
-          <div className="col-4">
+          <div className="col-lg-4">
             <ViewSoldierTimeSeriesChart
               label={"Heart Rate"}
               data={this.state.soldier.heartRate}
             />
           </div>
-          <div className="col-4">
+          <div className="col-lg-4">
             <ViewSoldierTimeSeriesChart
               label={"Water"}
               data={this.state.soldier.water}
@@ -99,13 +100,13 @@ export default class ViewSoldier extends Component {
           className="row justify-content-center"
           style={{ marginBottom: "20px" }}
         >
-          <div className="col-4">
+          <div className="col-md-4">
             <ViewSoldierNumberPanel
               label={"BMI"}
               data={this.state.soldier.bmi || [{ time: 0, value: 0 }]}
             />
           </div>
-          <div className="col-4">
+          <div className="col-md-4">
             <ViewSoldierNumberPanel
               label={"Body Differential"}
               data={

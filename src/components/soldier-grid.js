@@ -49,13 +49,14 @@ export default class SoldierGrid extends Component {
           className="row justify-content-center"
           style={{ marginBottom: "20px" }}
         >
-          <div className="col-2">
-            <h3 style={{ textAlign: "center" }}>Soldier Risk Scores</h3>
+          <div className="col-md-4">
+            <h1 style={{ textAlign: "center" }}>Soldier Risk Scores</h1>
           </div>
-          <div className="col-2" style={{ textAlign: "center" }}>
+          <div className="col-md-4" style={{ textAlign: "center" }}>
             <button
               type="button"
               className="btn btn-primary btn-lg"
+              style={{ width: "75%", minHeight: "75%" }}
               onClick={() => {
                 this.updateSoldiers();
               }}
@@ -68,7 +69,7 @@ export default class SoldierGrid extends Component {
           {this.state.soldiers.map((currentSoldier) => {
             return (
               <div
-                className="col-4"
+                className="col-md-6"
                 style={{ textAlign: "center", marginBottom: "20px" }}
               >
                 <Soldier

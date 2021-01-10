@@ -21,7 +21,7 @@ const TimeSeriesChart = ({ chartData }) => (
       <CartesianGrid />
       <XAxis
         dataKey="time"
-        domain={["auto", "auto"]}
+        domain={['auto', 'auto']}
         name="Time"
         tickFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}
         type="number"
@@ -30,7 +30,7 @@ const TimeSeriesChart = ({ chartData }) => (
       <Tooltip
         labelFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}
       />
-      <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
+      <Area type="monotone" dataKey="value" stroke="#461D7C" fill="#461D7C" />
     </AreaChart>
   </ResponsiveContainer>
 );
