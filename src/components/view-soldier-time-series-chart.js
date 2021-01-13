@@ -8,7 +8,10 @@ export default class ViewSoldierTimeSeriesChart extends Component {
         <h5 style={{ margin: "10px 0", textAlign: "center" }}>
           {this.props.label}
         </h5>
-        <TimeSeriesChart chartData={this.props.data} />
+        <TimeSeriesChart
+          chartData={this.props.data}
+          yAxisTicks={this.props.yAxisTicks}
+        />
       </div>
     );
   }

@@ -81,18 +81,21 @@ export default class ViewSoldier extends Component {
             <ViewSoldierTimeSeriesChart
               label={"Risk Score"}
               data={this.state.soldier.riskScore}
+              yAxisTicks={[0, 20, 40, 60, 80, 100]}
             />
           </div>
           <div className="col-lg-4">
             <ViewSoldierTimeSeriesChart
               label={"Heart Rate"}
               data={this.state.soldier.heartRate}
+              yAxisTicks={[0, 40, 80, 120, 160, 200]}
             />
           </div>
           <div className="col-lg-4">
             <ViewSoldierTimeSeriesChart
               label={"Water"}
               data={this.state.soldier.water}
+              yAxisTicks={[0, 20, 40, 60, 80, 100]}
             />
           </div>
         </div>

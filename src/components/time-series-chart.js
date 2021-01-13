@@ -12,7 +12,7 @@ import {
   YAxis,
 } from "recharts";
 
-const TimeSeriesChart = ({ chartData }) => (
+const TimeSeriesChart = ({ chartData, yAxisTicks }) => (
   <ResponsiveContainer width="100%" height={280}>
     <AreaChart
       data={chartData}
@@ -21,12 +21,18 @@ const TimeSeriesChart = ({ chartData }) => (
       <CartesianGrid />
       <XAxis
         dataKey="time"
-        domain={['auto', 'auto']}
+        domain={
+          [
+            chartData ? chartData.slice(-1)[0].time - 300000 : "dataMin",
+            "dataMax",
+          ] /* The x-axis domain goes from exactly 5 minutes (300000 milleseconds) before the latest time with data, up to latest time with data */
+        }
+        allowDataOverflow={true}
         name="Time"
         tickFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}
         type="number"
       />
-      <YAxis dataKey="value" name="Value" />
+      <YAxis dataKey="value" ticks={yAxisTicks} name="Value" />
       <Tooltip
         labelFormatter={(unixTime) => moment(unixTime).format("HH:mm:ss")}
       />
