@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TimeSeriesChart from "./time-series-chart";
+import RadialChart from "./radial-chart";
 
 export default class ViewSoldierTimeSeriesChart extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class ViewSoldierTimeSeriesChart extends Component {
           chartData={this.props.data}
           yAxisTicks={this.props.yAxisTicks}
         />
+        {/*<RadialChart value={this.props.pulseOx-85}/>*/}
       </div>
     );
   }

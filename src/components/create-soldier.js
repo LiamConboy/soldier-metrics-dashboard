@@ -13,7 +13,7 @@ export default class CreateSoldier extends Component {
     this.state = {
       name: "",
       bmi: undefined,
-      bodyDifferential: 1,
+      bodyDifferential: undefined,
     };
   }
 
@@ -54,9 +54,9 @@ export default class CreateSoldier extends Component {
   render() {
     return (
       <div>
-        <h3>Create New Soldier</h3>
+        <h3 style={{color: "gainsboro"}}>Create New Soldier</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
+          <div className="form-group text-light">
             <label>name: </label>
             <input
               type="text"
@@ -66,8 +66,8 @@ export default class CreateSoldier extends Component {
               onChange={this.onChangeName}
             />
           </div>
-          <div className="form-group">
-            <label>BMI: </label>
+          <div className="form-group text-light">
+            <label>Average PulseOX: </label>
             <input
               type="number"
               required
@@ -76,8 +76,8 @@ export default class CreateSoldier extends Component {
               onChange={this.onChangeBmi}
             />
           </div>
-          <div className="form-group">
-            <label>Body Differential: </label>
+          <div className="form-group text-light">
+            <label>Resting Heart Rate: </label>
             <input
               type="number"
               required
@@ -86,7 +86,7 @@ export default class CreateSoldier extends Component {
               onChange={this.onChangeBodyDifferential}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group text-light">
             <label>Garmin Watch Number: </label>
             <input
               type="number"
@@ -100,7 +100,7 @@ export default class CreateSoldier extends Component {
             <input
               type="submit"
               value="Create Soldier"
-              className="btn btn-primary"
+              className="btn btn-primary text-dark"
             />
           </div>
         </form>

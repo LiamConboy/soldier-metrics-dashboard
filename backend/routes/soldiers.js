@@ -91,6 +91,17 @@ router.route("/moisture").post(async (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/bloodPressure").post(async (req, res) => {
+  const name = req.body.name;
+  const value = req.body.value;
+
+  const newSample = { value: value, time: Date.now() };
+
+  Soldier.updateOne({ name: name }, { $push: { bloodPressure: newSample } })
+    .then(() => res.json(`Updated soldier ${name} bloodPressure`))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/bmi").post(async (req, res) => {
   const name = req.body.name;
   const value = req.body.value;

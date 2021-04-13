@@ -7,7 +7,7 @@ export default class SoldierGrid extends Component {
     super(props);
     this.deleteSoldier = this.deleteSoldier.bind(this);
     this.updateSoldiers = this.updateSoldiers.bind(this);
-    this.state = { soldiers: [] };
+    this.state = { soldiers: [], pulseOxValues: [96, 93, 90, 96, 94, 99, 99, 99] };
   }
 
   componentDidMount() {
@@ -19,6 +19,9 @@ export default class SoldierGrid extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+      
+
   }
 
   updateSoldiers() {
@@ -30,6 +33,8 @@ export default class SoldierGrid extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
+    this.setState({ pulseOxValues: this.state.pulseOxValues.map((value) => {return value-1}) })
   }
 
   deleteSoldier(name) {
@@ -50,13 +55,13 @@ export default class SoldierGrid extends Component {
           style={{ marginBottom: "20px" }}
         >
           <div className="col-md-4">
-            <h1 style={{ textAlign: "center" }}>Soldier Risk Scores</h1>
+            <h1 style={{ textAlign: "center", color:"gainsboro" }}>Soldier Pulse Ox Values</h1>
           </div>
           <div className="col-md-4" style={{ textAlign: "center" }}>
             <button
               type="button"
               className="btn btn-primary btn-lg"
-              style={{ width: "75%", minHeight: "75%" }}
+              style={{ width: "75%", minHeight: "75%", color: "black" }}
               onClick={() => {
                 this.updateSoldiers();
               }}
@@ -66,7 +71,7 @@ export default class SoldierGrid extends Component {
           </div>
         </div>
         <div className="row justify-content-center">
-          {this.state.soldiers.map((currentSoldier) => {
+          {this.state.soldiers.map((currentSoldier, i) => {
             return (
               <div
                 className="col-md-6"
@@ -76,6 +81,7 @@ export default class SoldierGrid extends Component {
                   soldier={currentSoldier}
                   deleteSoldier={this.deleteSoldier}
                   key={currentSoldier.name}
+                  pulseOx={this.state.pulseOxValues[i]}
                 />
               </div>
             );

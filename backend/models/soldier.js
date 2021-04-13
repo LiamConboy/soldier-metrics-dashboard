@@ -15,6 +15,7 @@ const soldierSchema = new Schema({
   heartRate: { type: Array, required: true },
   moisture: { type: Array, required: true },
   bmi: { type: Array, required: true },
+  bloodPressure: { type: Array, required: true },
   riskScore: { type: Array, required: true },
 });
 

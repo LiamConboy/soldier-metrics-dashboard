@@ -7,16 +7,16 @@ export default class Soldier extends Component {
     return (
       <div className="row justify-content-center align-items-center">
         <div className="col justify-content-center align-items-center">
-          <h3 style={{ margin: "10px 0" }}>{this.props.soldier.name}</h3>
+          <h3 style={{ margin: "10px 0", color: "gainsboro" }}>{this.props.soldier.name}</h3>
           <div className="row justify-content-center align-items-center">
-            <Link
+            {/* <Link
               to={"/view/" + this.props.soldier.name}
               type="button"
               className="btn btn-secondary btn-lg"
               style={{ margin: "0 10px" }}
             >
               view
-            </Link>
+            </Link> */}
             <button
               type="button"
               className="btn btn-danger btn-lg"
@@ -28,7 +28,7 @@ export default class Soldier extends Component {
               delete
             </button>
           </div>
-          <SoldierRiskScore soldier={this.props.soldier} />
+          <SoldierRiskScore soldier={this.props.soldier} pulseOx={this.props.pulseOx} />
         </div>
       </div>
     );
